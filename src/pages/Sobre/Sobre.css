@@ -102,10 +102,9 @@
     font-size: 1.2pc;
 
 }
-.container #title{
+.container p{
     text-align: center;
-    font-family: "Jolly Lodger", system-ui;
     font-size: 4.5pc;
-    font-weight: 600;
+    font-weight: 700;
 
 }

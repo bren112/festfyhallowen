@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import supabase from '../../supabaseclient';
 import banner from './banner.jpeg';
+import sucess from './sucess.png';
 import './Pagamento.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Pagamento() {
     // Definindo a chave PIX predefinida
@@ -10,12 +12,14 @@ function Pagamento() {
     const [valor, setValor] = useState('22');
     // Estado para o telefone
     const [telefone, setTelefone] = useState('');
+    // Estado para controlar o envio do formulário
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     // Função para copiar a chave PIX para a área de transferência
     const copiarPix = () => {
         navigator.clipboard.writeText(pix)
             .then(() => {
-                alert('Chave PIX copiada para a área de transferência!');
+                toast.success('Chave PIX copiada para a área de transferência!');
             })
             .catch(err => {
                 console.error('Erro ao copiar a chave PIX:', err);
@@ -63,65 +67,82 @@ function Pagamento() {
 
         if (error) {
             console.error('Erro ao inserir dados:', error);
-            alert('Erro ao enviar dados. Tente novamente.');
+            toast.error('Erro ao enviar dados. Tente novamente.');
         } else {
-            alert('Dados enviados com sucesso!');
-            // Limpar os campos do formulário após o envio
-            event.target.reset();
-            setTelefone('');
+            toast.success('Dados enviados com sucesso!');
+            // Atualiza o estado para mostrar a mensagem de sucesso
+            setFormSubmitted(true);
         }
+    };
+
+    // Função para reiniciar o formulário
+    const handleReenviar = () => {
+        setFormSubmitted(false);
+        setTelefone('');
     };
 
     return (
         <div className='pai'>
             <br/>
-            <div className="pagamento">
-                <br/>
-                <div className="infos">
-                    <img src={banner} alt="" />
-                    <p>Solicite sua <br/>Aprovação!</p>
+            {formSubmitted ? (
+                <div className="success-message">
+                    <h1>Solicitação Enviada!</h1>
+                    <p>Sua solicitação foi enviada com Sucesso! Em estantes entraremo em contato pelo Whatsapp!</p>
+                    <br/>
+                    <img src={sucess} alt="" srcset="" />
+                    <br/>
+                    <button onClick={handleReenviar}>Reenviar</button>
                 </div>
-                <br/>
-                <form className="formulario" onSubmit={handleSubmit}>
-                    <div className="campo">
-                        <label htmlFor="nome">Nome (Sem Apelido)</label>
-                        <input type="text" id="nome" name="nome" required />
+            ) : (
+                <div className="pagamento">
+                    <br/>
+                    <div className="infos">
+                        <img src={banner} alt="" />
+                        <p>Solicite sua <br/>Aprovação!</p>
                     </div>
-                    <div className="campo">
-                        <label htmlFor="sobrenome">Sobrenome</label>
-                        <input type="text" id="sobrenome" name="sobrenome" required />
-                    </div>
-                    <div className="campo">
-                        <label htmlFor="telefone">Telefone</label>
-                        <input
-                            type="tel"
-                            id="telefone"
-                            name="telefone"
-                            value={telefone}
-                            onChange={handleTelefoneChange}
-                            maxLength="15" // Define o comprimento máximo do campo para evitar entradas inválidas
-                            required
-                        />
-                    </div>
-                    <div className="campo">
-                        <label htmlFor="pix">PIX</label>
-                        <div className="pix">
-                            <input type="text" id="pix" name="pix" value={pix} readOnly />
-                            <button id='pix-btn' type="button" onClick={copiarPix}>Copiar</button>
+                    <br/>
+                    <form className="formulario" onSubmit={handleSubmit}>
+                        <div className="campo">
+                            <label htmlFor="nome">Nome (Sem Apelido)</label>
+                            <input type="text" id="nome" name="nome" required />
                         </div>
-                    </div>
-                    <div className="campo">
-                        <label htmlFor="valor">Valor</label>
-                        <select id="valor" name="valor" value={valor} onChange={handleValorChange}>
-                            <option value="22">Valor da Casa (22)</option>
-                            <option value="20">Valor de Fora (20)</option>
-                        </select>
-                    </div>
-                    <br/>
-                    <button id='enviar' type="submit">Enviar</button>
-                    <br/>
-                </form>
-            </div>
+                        <div className="campo">
+                            <label htmlFor="sobrenome">Sobrenome</label>
+                            <input type="text" id="sobrenome" name="sobrenome" required />
+                        </div>
+                        <div className="campo">
+                            <label htmlFor="telefone">Telefone</label>
+                            <input
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                value={telefone}
+                                onChange={handleTelefoneChange}
+                                maxLength="15" // Define o comprimento máximo do campo para evitar entradas inválidas
+                                required
+                            />
+                        </div>
+                        <div className="campo">
+                            <label htmlFor="pix">PIX</label>
+                            <div className="pix">
+                                <input type="text" id="pix" name="pix" value={pix} readOnly />
+                                <button id='pix-btn' type="button" onClick={copiarPix}>Copiar</button>
+                            </div>
+                        </div>
+                        <div className="campo">
+                            <label htmlFor="valor">Valor</label>
+                            <select id="valor" name="valor" value={valor} onChange={handleValorChange}>
+                                <option value="22">Valor da Casa (22)</option>
+                                <option value="20">Valor de Fora (20)</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <button id='enviar' type="submit">Enviar</button>
+                        <br/>
+                    </form>
+                </div>
+            )}
+            <Toaster /> {/* Adiciona o Toaster aqui */}
             <br/>
         </div>
     );

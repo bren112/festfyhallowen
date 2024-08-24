@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.atracoes {
+    text-align: center;
+}
+
+.atracoes h1 {
+    font-size: 4pc;
+    font-weight: 500;
+}
+
+.atracoes img {
+    width: 100%;
+    height: auto;
+}
+
+#atracoes {
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--ter);
+    text-shadow: 
+    -1px -5px 0 #000,  
+     1px -2px 0 #000,
+    -1px  2px 0 #000,
+     1px  1px 0 #000; 
+}
+
+.link-button {
+    width: 9pc;
+    height: 3pc;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.8rem;
+    color: #fff;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.link-button:hover {
+    background-color: var(--ter);
+    color: var(--primary);
+}
+
+/* Estilo do círculo giratório */
+.loading-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Ajuste o tamanho do círculo conforme necessário */
+    margin: 20px auto;
+}
+
+.circle {
+    border: 8px solid #f3f3f3; /* Cor do fundo do círculo */
+    border-top: 8px solid var(--ter); /* Cor da parte giratória do círculo */
+    border-radius: 50%;
+    width: 80px; /* Ajuste o tamanho do círculo conforme necessário */
+    height: 80px; /* Ajuste o tamanho do círculo conforme necessário */
+    animation: spin 1s linear infinite;
+}
+
+/* Animação do círculo giratório */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

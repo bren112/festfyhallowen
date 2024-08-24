@@ -14,7 +14,7 @@
     display: inline-block;
     white-space: nowrap;
     position: absolute; 
-    animation: fadeIn 2s forwards, marquee 25s linear infinite;
+    animation: fadeIn 2s forwards, marquee 8s linear infinite;
 }
 
 @keyframes fadeIn {

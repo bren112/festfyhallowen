@@ -62,7 +62,7 @@ function Sobre() {
 
                         <div className="btnlaranja">
                     <Link to="/atracoes">
-                            <button>Conhecer Atrações</button>
+                            <button>Atrações</button>
                     </Link>
 
                         </div>
