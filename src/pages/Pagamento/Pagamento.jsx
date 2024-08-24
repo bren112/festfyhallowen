@@ -1,0 +1,130 @@
+import React, { useState } from 'react';
+import supabase from '../../supabaseclient';
+import banner from './banner.jpeg';
+import './Pagamento.css';
+
+function Pagamento() {
+    // Definindo a chave PIX predefinida
+    const [pix] = useState('12345678900@pix.com.br');
+    // Definindo o valor selecionado
+    const [valor, setValor] = useState('22');
+    // Estado para o telefone
+    const [telefone, setTelefone] = useState('');
+
+    // Função para copiar a chave PIX para a área de transferência
+    const copiarPix = () => {
+        navigator.clipboard.writeText(pix)
+            .then(() => {
+                alert('Chave PIX copiada para a área de transferência!');
+            })
+            .catch(err => {
+                console.error('Erro ao copiar a chave PIX:', err);
+            });
+    };
+
+    // Função para atualizar o valor selecionado
+    const handleValorChange = (event) => {
+        setValor(event.target.value);
+    };
+
+    // Função para atualizar o telefone com máscara
+    const handleTelefoneChange = (event) => {
+        const { value } = event.target;
+        // Remove todos os caracteres não numéricos
+        const onlyNumbers = value.replace(/\D/g, '');
+        // Aplica a máscara
+        const formatted = onlyNumbers
+            .replace(/^(\d{2})(\d)/g, '($1) $2')
+            .replace(/(\d{5})(\d)/g, '$1-$2')
+            .replace(/(-\d{4})\d+?$/, '$1');
+        setTelefone(formatted);
+    };
+
+    // Função para lidar com o envio do formulário
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // Obter os dados do formulário
+        const nome = event.target.nome.value;
+        const sobrenome = event.target.sobrenome.value;
+        const telefone = event.target.telefone.value;
+        const valor = event.target.valor.value;
+
+        // Inserir dados no banco de dados
+        const { data, error } = await supabase
+            .from('pagamentos')
+            .insert([
+                {
+                    nome: nome,
+                    sobrenome: sobrenome,
+                    telefone: telefone,
+                    valor: valor
+                }
+            ]);
+
+        if (error) {
+            console.error('Erro ao inserir dados:', error);
+            alert('Erro ao enviar dados. Tente novamente.');
+        } else {
+            alert('Dados enviados com sucesso!');
+            // Limpar os campos do formulário após o envio
+            event.target.reset();
+            setTelefone('');
+        }
+    };
+
+    return (
+        <div className='pai'>
+            <br/>
+            <div className="pagamento">
+                <br/>
+                <div className="infos">
+                    <img src={banner} alt="" />
+                    <p>Solicite sua <br/>Aprovação!</p>
+                </div>
+                <br/>
+                <form className="formulario" onSubmit={handleSubmit}>
+                    <div className="campo">
+                        <label htmlFor="nome">Nome (Sem Apelido)</label>
+                        <input type="text" id="nome" name="nome" required />
+                    </div>
+                    <div className="campo">
+                        <label htmlFor="sobrenome">Sobrenome</label>
+                        <input type="text" id="sobrenome" name="sobrenome" required />
+                    </div>
+                    <div className="campo">
+                        <label htmlFor="telefone">Telefone</label>
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            value={telefone}
+                            onChange={handleTelefoneChange}
+                            maxLength="15" // Define o comprimento máximo do campo para evitar entradas inválidas
+                            required
+                        />
+                    </div>
+                    <div className="campo">
+                        <label htmlFor="pix">PIX</label>
+                        <div className="pix">
+                            <input type="text" id="pix" name="pix" value={pix} readOnly />
+                            <button id='pix-btn' type="button" onClick={copiarPix}>Copiar</button>
+                        </div>
+                    </div>
+                    <div className="campo">
+                        <label htmlFor="valor">Valor</label>
+                        <select id="valor" name="valor" value={valor} onChange={handleValorChange}>
+                            <option value="22">Valor da Casa (22)</option>
+                            <option value="20">Valor de Fora (20)</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <button id='enviar' type="submit">Enviar</button>
+                    <br/>
+                </form>
+            </div>
+            <br/>
+        </div>
+    );
+}
+
+export default Pagamento;

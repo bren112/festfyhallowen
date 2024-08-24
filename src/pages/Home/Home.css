@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.marquee {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 30px; 
+    background-color: var(--ter); 
+}
+
+.marquee h1 {
+    font-size: 20px;
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute; 
+    animation: fadeIn 2s forwards, marquee 25s linear infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); 
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%); 
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container h1 {
+    text-align: center;
+    font-family: "Jolly Lodger", system-ui;
+    font-size: 4.8pc;
+}
+
+.container span {
+    text-align: center;
+    font-family: "Jolly Lodger", system-ui;
+    font-size: 5.8pc;
+    color: var(--ter);
+    font-weight: 700;
+    letter-spacing: 0.1pc;
+}
+
+.container img {
+    width: 16pc;
+    border-radius: 1pc;
+}
+
+.container button {
+    width: 13pc;
+    height: 3pc;
+    background-color: var(--ter);
+    border: none;
+    border-radius: 2pc;
+    font-size: 1.2pc;
+}
+.container button:hover {
+    transition: 0.9s;
+    width: 13pc;
+    height: 3pc;
+    background-color: rgb(174, 113, 14);
+    border: none;
+    border-radius: 2pc;
+    font-size: 1.2pc;
+}
+
+.dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1pc;
+}
+
+.esq button {
+    display: none;
+}
+
+.esq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1pc;
+}
+
+.dir button {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .marquee {
+        height: 50px; 
+    }
+
+    .marquee h1 {
+        font-size: 1.2em; 
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container h1 {
+        text-align: center;
+        font-family: "Jolly Lodger", system-ui;
+        font-size: 2.8pc;
+    }
+
+    .container span {
+        text-align: center;
+        font-family: "Jolly Lodger", system-ui;
+        font-size: 3.9pc;
+        color: var(--ter);
+        font-weight: 700;
+        letter-spacing: 0.1pc;
+    }
+
+    .container img {
+        width: 16pc;
+    }
+
+    .esq button {
+        display: none;
+    }
+}
