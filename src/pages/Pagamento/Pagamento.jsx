@@ -7,8 +7,8 @@ import toast, { Toaster } from 'react-hot-toast';
 
 function Pagamento() {
     // Definindo a chave PIX predefinida
-    const [pix] = useState('12345678900@pix.com.br');
-    // Definindo o valor selecionado
+    const [pix] = useState('488.431.768-89');
+    //  Definindo o valor selecionado
     const [valor, setValor] = useState('22');
     // Estado para o telefone
     const [telefone, setTelefone] = useState('');
