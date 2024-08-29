@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Atracoes.css';
 import ctc from './ctc.png';
 import img from './img.png';
+import paredao from './paredao.png';
 
 function Atracoes() {
     const [progress, setProgress] = useState(0);
@@ -16,6 +17,11 @@ function Atracoes() {
 
     return (
         <div className="atracoes">
+            <br />
+
+            <p id='atracoes'>PAREDÃO</p>
+            <img src={paredao} alt="" srcset="" />
+
             <br />
             <p id='atracoes'>CTC MOB </p>
             <img src={img} alt="CTC2" />
