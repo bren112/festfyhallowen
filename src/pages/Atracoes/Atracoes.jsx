@@ -3,6 +3,7 @@ import './Atracoes.css';
 import ctc from './ctc.png';
 import img from './img.png';
 import paredao from './paredao.png';
+import kury from './djkury2.png'
 
 function Atracoes() {
     const [progress, setProgress] = useState(0);
@@ -18,6 +19,11 @@ function Atracoes() {
     return (
         <div className="atracoes">
             <br />
+            <p id='atracoes'>DJ KURY 🧙‍♂️ </p>
+            <img src={kury} alt="" srcset="" />
+
+            
+
 
             <p id='atracoes'>PAREDÃO</p>
             <img src={paredao} alt="" srcset="" />
