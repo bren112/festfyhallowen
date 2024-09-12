@@ -19,9 +19,17 @@ function Atracoes() {
     return (
         <div className="atracoes">
             <br />
-            <p id='atracoes'>DJ KURY 🧙‍♂️ </p>
+            <p id='atracoes'>DJ KURI 🧙‍♂️ </p>
             <img src={kury} alt="" srcset="" />
+            <br/>
+        
+            <a id='a' href="https://www.instagram.com/djkuri_/?locale=tiny%2Bapk【GB999.BET】.xwur&hl=en" target="_blank" rel="noopener noreferrer" className="link-button">
+                Instagram
+            </a>
 
+            <br/>
+            <br/>
+            <br/>
             
 
 
