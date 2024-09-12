@@ -23,7 +23,7 @@ function Atracoes() {
             <img src={kury} alt="" srcset="" />
             <br/>
         
-            <a id='a' href="https://www.instagram.com/djkuri_/?locale=tiny%2Bapk【GB999.BET】.xwur&hl=en" target="_blank" rel="noopener noreferrer" className="link-button">
+            <a id='a' href="https://www.instagram.com/djkuri_/" target="_blank" rel="noopener noreferrer" className="link-button">
                 Instagram
             </a>
 
