@@ -5,7 +5,7 @@ import img from './img.png';
 import paredao from './virtu.png';
 import kury from './djkury2.png'
 import kurydois from './djkuri.png'
-import palco from './palco.png'
+import palco from './palco2.png'
 
 
 function Atracoes() {
