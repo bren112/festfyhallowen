@@ -5,6 +5,8 @@ import img from './img.png';
 import paredao from './virtu.png';
 import kury from './djkury2.png'
 import kurydois from './djkuri.png'
+import palco from './palco.png'
+
 
 function Atracoes() {
     const [progress, setProgress] = useState(0);
@@ -19,6 +21,10 @@ function Atracoes() {
 
     return (
         <div className="atracoes">
+            <br />
+            <p id='atracoes'>PALCO 360°</p>
+            <img src={palco} alt="" srcset="" />
+            <br />
             <br />
             <p id='atracoes'>DJ KURI</p>
             <img src={kury} alt="" srcset="" />
