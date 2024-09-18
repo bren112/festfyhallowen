@@ -87,7 +87,7 @@ function Pagamento() {
             {formSubmitted ? (
                 <div className="success-message">
                     <h1>Solicitação Enviada!</h1>
-                    <p>Sua solicitação foi enviada com Sucesso! Em estantes entraremo em contato pelo Whatsapp!</p>
+                    <p>Sua solicitação foi enviada com Sucesso! Em instantes entraremos em contato pelo Whatsapp!</p>
                     <br/>
                     <img src={sucess} alt="" srcset="" />
                     <br/>
