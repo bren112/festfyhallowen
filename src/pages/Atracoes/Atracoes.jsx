@@ -4,9 +4,9 @@ import ctc from './ctc.png';
 import img from './img.png';
 import paredao from './paredao.png';
 import kury from './djkury2.png'
-import kurydois from './djkuri.png'
-import palco from './palco2.png'
-import virtu from './virtu.png'
+import kurydois from './djkuri.png';
+import palco from './palco2.png';
+import virtu from './virtu.png';
 
 
 function Atracoes() {
