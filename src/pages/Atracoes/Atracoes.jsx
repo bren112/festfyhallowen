@@ -47,7 +47,7 @@ function Atracoes() {
 
 
             <p id='atracoes'>DJ VIRTU</p>
-            <img src={virty} alt="" srcset="" />
+            <img src={virtu} alt="" srcset="" />
 
             <br />
             <br/>
