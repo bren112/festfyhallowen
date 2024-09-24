@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './Atracoes.css';
 import ctc from './ctc.png';
 import img from './img.png';
-import paredao from './virtu.png';
+import paredao from './paredao.png';
 import kury from './djkury2.png'
 import kurydois from './djkuri.png'
 import palco from './palco2.png'
+import virtu from './virtu.png'
 
 
 function Atracoes() {
@@ -21,6 +22,9 @@ function Atracoes() {
 
     return (
         <div className="atracoes">
+             <br />
+            <p id='atracoes'>PAREDÃO</p>
+            <img src={paredao} alt="" srcset="" />
             <br />
             <p id='atracoes'>PALCO 360°</p>
             <img src={palco} alt="" srcset="" />
@@ -43,7 +47,7 @@ function Atracoes() {
 
 
             <p id='atracoes'>DJ VIRTU</p>
-            <img src={paredao} alt="" srcset="" />
+            <img src={virty} alt="" srcset="" />
 
             <br />
             <br/>
