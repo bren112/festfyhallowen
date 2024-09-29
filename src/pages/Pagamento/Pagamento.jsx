@@ -133,7 +133,7 @@ function Pagamento() {
                             <label htmlFor="valor">Valor</label>
                             <select id="valor" name="valor" value={valor} onChange={handleValorChange}>
                                 <option value="35">Valor da Casa (35)</option>
-                                <option value="30">Valor de Fora (30)</option>
+                                <option value="35">Valor de Fora (35)</option>
                             </select>
                         </div>
                         <br/>
